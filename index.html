@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Friday kommunikációs előkészítés — Diag-G.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#E4002B;          /* élénk brand piros (ár, badge, akcent) */
+  --maroon:#8E1A18;       /* mély brick vörös (gombok, sávok) */
+  --maroon-d:#6f1210;
+  --ink:#1a1a1a;
+  --body:#3a3a3a;
+  --muted:#7a7a7a;
+  --line:#e6e6e6;
+  --band:#f2f2f2;
+  --card:#ffffff;
+  --green:#1f8f4e;
+  --orange:#E08a00;
+  --bg:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  color:var(--body);background:var(--bg);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ---- Header ---- */
+header{background:var(--ink);color:#fff;padding:0}
+.topbar{display:flex;align-items:center;gap:14px;padding:18px 20px;max-width:1080px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:12px}
+.mark{width:40px;height:36px;position:relative;flex:0 0 auto}
+.mark svg{display:block}
+.logo .name{font-weight:900;letter-spacing:1px;font-size:24px;color:#fff;line-height:1}
+.logo .name b{color:var(--red)}
+.logo .sub{font-size:10px;letter-spacing:3px;color:#bdbdbd;text-transform:uppercase;font-weight:600;margin-top:3px}
+.hero{background:linear-gradient(120deg,var(--maroon) 0%,var(--red) 100%);color:#fff;text-align:center;padding:46px 20px 50px}
+.hero .kicker{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+  padding:6px 16px;border-radius:40px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:38px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;line-height:1.1;margin-bottom:12px}
+.hero p{font-size:16px;max-width:620px;margin:0 auto;color:rgba(255,255,255,.92);font-weight:500}
+.hero .meta{margin-top:18px;font-size:12.5px;letter-spacing:1px;color:rgba(255,255,255,.8);text-transform:uppercase;font-weight:600}
+
+/* ---- KPI row ---- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:-32px auto 0;position:relative;z-index:3}
+.kpi{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:8px;
+  padding:20px 18px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.kpi .n{font-size:30px;font-weight:900;color:var(--ink);line-height:1}
+.kpi .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-weight:700;margin-top:8px}
+
+/* ---- Sections ---- */
+section{padding:44px 0 10px}
+.sec-head{text-align:center;margin-bottom:30px}
+.sec-head .tag{display:inline-block;background:var(--maroon);color:#fff;font-size:11px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:14px}
+.sec-head h2{font-size:27px;font-weight:900;color:var(--ink);text-transform:uppercase;letter-spacing:.5px}
+.sec-head p{color:var(--muted);max-width:640px;margin:10px auto 0;font-size:15px}
+.lead{font-size:16px;color:var(--body)}
+.lead strong{color:var(--ink)}
+
+h3{font-size:19px;font-weight:800;color:var(--ink);margin:26px 0 12px}
+p{margin-bottom:14px}
+.wrap>p, section p{max-width:none}
+
+/* ---- Callout boxes ---- */
+.note{border-radius:8px;padding:18px 20px;margin:16px 0;border-left:5px solid var(--red);background:#fdf2f3}
+.note.gray{background:var(--band);border-left-color:var(--maroon)}
+.note.red{background:#fdeef0;border-left-color:var(--red)}
+.note b,.note strong{color:var(--ink)}
+.note .h{font-weight:800;color:var(--ink);text-transform:uppercase;font-size:12.5px;letter-spacing:1px;margin-bottom:6px;display:block}
+
+/* ---- Tables ---- */
+.tbl{width:100%;border-collapse:collapse;margin:14px 0 8px;font-size:14px;overflow:hidden;border-radius:8px;border:1px solid var(--line)}
+.tbl th{background:var(--ink);color:#fff;text-align:left;padding:11px 12px;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+.tbl td{padding:10px 12px;border-top:1px solid var(--line)}
+.tbl tr:nth-child(even) td{background:#fafafa}
+.tbl td.n,.tbl th.n{text-align:right;font-variant-numeric:tabular-nums}
+.tbl .hi{background:#fdf2f3 !important;font-weight:700}
+.tbl .hi td{color:var(--ink)}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:.3px;text-transform:uppercase}
+.pill.p{background:#fbe0e3;color:#b3001e}    /* pénztár */
+.pill.o{background:#fdeecf;color:#8a5500}    /* oldal */
+.pill.g{background:#dcf2e6;color:#136b39}    /* erős */
+
+/* ---- Bar charts ---- */
+.chart{margin:18px 0 8px}
+.bar-row{display:grid;grid-template-columns:190px 1fr 78px;align-items:center;gap:12px;margin:9px 0}
+.bar-row .lab{font-size:13px;font-weight:600;color:var(--ink);text-align:right}
+.bar-track{background:var(--band);border-radius:5px;height:26px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--maroon),var(--red))}
+.bar-row .val{font-size:13px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+/* funnel two-stage */
+.funnel{display:grid;grid-template-columns:1fr;gap:14px;margin-top:8px}
+.fcard{border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.fcard .ft{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.fcard .ft .nm{font-weight:800;color:var(--ink);font-size:14.5px}
+.fstep{display:grid;grid-template-columns:96px 1fr 52px;align-items:center;gap:10px;margin:6px 0;font-size:12.5px}
+.fstep .s{color:var(--muted);font-weight:600}
+.ftrack{background:var(--band);height:20px;border-radius:4px;overflow:hidden}
+.ffill{height:100%;border-radius:4px}
+.fstep .fv{text-align:right;font-weight:800;color:var(--ink)}
+
+/* bundles */
+.bundles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.bcard{border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+.bcard .cap{padding:16px 18px;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:15px}
+.bcard.k .cap{background:linear-gradient(120deg,#2c2c2c,#4a4a4a)}
+.bcard.h .cap{background:linear-gradient(120deg,var(--maroon),var(--red))}
+.bcard.p .cap{background:linear-gradient(120deg,#5a0f0e,var(--maroon))}
+.bcard .body{padding:16px 18px;flex:1}
+.bcard .tier{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.bcard ul{list-style:none;margin:0 0 10px}
+.bcard li{padding:7px 0 7px 22px;position:relative;font-size:13.5px;border-bottom:1px dashed var(--line)}
+.bcard li:last-child{border-bottom:none}
+.bcard li:before{content:"";position:absolute;left:0;top:13px;width:9px;height:9px;background:var(--red);border-radius:2px}
+.bcard li b{color:var(--ink)}
+.bcard .why{font-size:12.5px;color:var(--muted);background:var(--band);padding:10px 12px;border-radius:6px;margin-top:4px}
+
+/* recommendation strip */
+.rec{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px 18px;border:1px solid var(--line);
+  border-radius:8px;margin:12px 0;background:#fff}
+.rec .ic{width:44px;height:44px;border-radius:8px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px}
+.rec.o .ic{background:var(--orange)}
+.rec.g .ic{background:var(--green)}
+.rec .rt{font-weight:800;color:var(--ink);margin-bottom:3px;font-size:15px}
+.rec .rd{font-size:13.5px;color:var(--body)}
+
+/* questions */
+.q{counter-reset:q;list-style:none;margin-top:8px}
+.q li{position:relative;padding:12px 12px 12px 52px;border:1px solid var(--line);border-radius:8px;margin-bottom:10px;font-size:14px}
+.q li:before{counter-increment:q;content:counter(q);position:absolute;left:12px;top:11px;width:28px;height:28px;
+  background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+
+.divider{height:1px;background:var(--line);margin:8px 0 0}
+.band-sec{background:var(--band);margin-top:38px}
+
+/* footer */
+footer{background:var(--ink);color:#fff;text-align:center;padding:34px 20px;margin-top:44px}
+footer .g{font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:1px;line-height:1.35}
+footer .g em{color:var(--red);font-style:normal}
+footer .fmeta{font-size:12px;color:#9a9a9a;margin-top:14px;letter-spacing:.5px}
+
+.small{font-size:12.5px;color:var(--muted)}
+.hl{color:var(--red);font-weight:800}
+
+@media(max-width:860px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .bundles{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+  .bar-row{grid-template-columns:120px 1fr 62px}
+  .bar-row .lab{font-size:11.5px}
+  .fstep{grid-template-columns:74px 1fr 46px}
+}
+
+/* ---- real logo ---- */
+.brandlogo{height:46px;width:auto;display:block}
+@media(max-width:860px){.brandlogo{height:38px}}
+
+/* ---- hover interactivity (subtle) ---- */
+.bar-row{transition:background .2s ease;border-radius:6px;padding:2px 4px;margin-left:-4px;margin-right:-4px}
+.bar-row:hover{background:#fbfbfb}
+.bar-fill{transition:filter .25s ease, box-shadow .25s ease}
+.bar-track{transition:box-shadow .25s ease}
+.bar-row:hover .bar-fill{filter:brightness(1.10) saturate(1.08)}
+.bar-row:hover .bar-track{box-shadow:inset 0 0 0 1px rgba(228,0,43,.25)}
+.bar-row .val{transition:color .2s ease, transform .2s ease;transform-origin:left center}
+.bar-row:hover .val{color:var(--red);transform:scale(1.06)}
+
+.kpi{transition:transform .22s ease, box-shadow .22s ease}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.10)}
+
+.fcard{transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease}
+.fcard:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.08);border-color:#dcdcdc}
+.ffill{transition:filter .25s ease}
+.fstep:hover .ffill{filter:brightness(1.10) saturate(1.08)}
+.fstep .fv{transition:color .2s ease}
+.fstep:hover .fv{color:var(--red)}
+
+.tbl tbody tr{transition:background .18s ease}
+.tbl tbody tr:hover td{background:#fdf2f3 !important}
+
+.bcard{transition:transform .22s ease, box-shadow .22s ease}
+.bcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.10)}
+.rec{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+.rec:hover{transform:translateX(3px);box-shadow:0 8px 20px rgba(0,0,0,.06);border-color:#e0c9cb}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="logo">
+      <img class="brandlogo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAABOCAYAAAC5bXpFAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABPqADAAQAAAABAAAATgAAAAAzo3zVAAAv70lEQVR4Ae2dB5wURfbHa2Y2sksQUVQMKGLAeB5gFlHPgOFvAsOZz3SGM5x6Zzo5A+p55hzO7HnmdOaAAqcoBhQVI6AoKhmBjTPT/++vJ2x3b0/amd0dlnn7+W1XvXqVXle9flUdJmCWEfrYmJovjWkeZUxTuiZbX1uVZm2zGzLltlwoYiLpMuScFnLlcMdcSV0hUkYnfgwEAhO6QmdKfShpIKEBDeyip0eNCWFgbt7QmPE09l9pG1xmAvzti8zRMTlFS5SHBo4ib8nw5aHAUtbi08AyYROmGLMnXsd/jWVNtozZfRNjfkmnSqvBWtcEzRtgDWCidi+j6bLkkEaBDnLHHAldI/gCet+za3Sl1IuSBlo0UPTzFlejO829LN7kzbBhx7U03z8UqAp8Q8q1BitZojZrYDE5z2tz7lLGkgaKWANFb/h6GvMnvI7NbB0SwJad+okxOH0ZaIm5G8P3toyfOpkK3lJaywXJ6/xzl+XN34XiN6ButlZLVNJA19NAURu+ycZshId3rFPtTMaV4Z2ufT8n3xsO9A4swuhdA7/Bm1aKZ9TAZ0jclVGqJFDSwDKqgaI1fGONKePOy2kmEOjv1S2G7+j1jRnm5XvjgcrAE9zZeJFdPm9SMu718JIJy28gTNev5wIzY/lVQannXV0DRWv4+hgznFUqT6/4ELMSd+/yF4yp9El1s5rNBTAWupmlWBoNcM0xONQlKmmg62qgKA3fRGN64NX9BfvGFl8KCgSGrm7MSSlSk2y8vs9NNHq9faMDS+o6JqWcgfbyAeV1+sFZd6eHf6UFV6L3RZ3eklIDShpoRw0UpeGrMeZAlrg7Z+x3wPz5fWMGZJRbUncDMp+2kpMhLJFTA49j9F53Mkrhkga6ogZwrIqLeGavLy2axARcI33LLBPBbDcGzV1Dm83xyKY1Y1Y4LGP6CHt+MWNvxW1+wLH/Z2uj0NcCR/m2x5ep/Ezp6bWSR6qejRyC3mfmUYZvVsuy1iRhXaDO+Z0n8fRGjjzOuUAeZz1tcSoPVtuI+jWm1gPzwFTK9WtDToVTpt4M2ghou+VzytTjPx1KtEF114IVQG/QDWgU14MFYDaoo22NHJc5Yr8lxF5XYV+8imuB+wdFR+dxojIYPVeb95tUZh4dEjavurjeyIIFL5sVVniScYEB9CbG44npkCo9Rbbs2JrDnWbUsmniGPTeHkZvKyq/DaydoREa4JqgMk68nWheZWK/yXEa7Ur7miIyKYky1iFRHv92QMbgTPAUyJf+QAEXgSrwIPX8lXYuzbfQbPJTVy/khoLfgW3BqkDPu8oYi3SDagn4CUxEXnNDzoQMYdHRWG5k9jZVOzA7trdMdE3etaJ/Vm3QWGXsU9UzHTHkkVlMz3eQGbeBMbPy7US7TPG2Noq16BA69xYnqDpzGTGPrxlN4Be8VBUxI7n86mSnJKu5eWsTDD6PAFdIMopaORVxfiy19X8a6KIM4q3vKHszeJ0ab7qrtvaKTKLgYehdnkJBiUnHuDY7trFQnc9nwR3gXdqX06NJ1K3xfQU4ByRoBoEtKEtGsE1EueuT8T3Qw1HAUZR5nyNe8CD19qPQQ8DhYNMcK/ga+bvBI7Rzeo5520X8hcrKAb3D5efURMz2VCCvvHfMIEXjs7PlKD4zfimzYw5G8CPi1w/EVrS1YZ0yy/way15dOTblEk5KFkYvVkKQDGXYDbArHTnAr1wXr7x8Ijc67nPxSpFmVHAhei+40YurduM8VKxl3KFAHstNTPwNcyxL3thqnjzyluQh5UPy9uRhOekQ2qf2FpwotxwcRsEvgqtArkZPbcJOmMuBPOkTQU8xO4O0nfW5MZeu09j4fk204fhoILohYKkexbjJWY3y5z5appmFWrQG49efab8f0/7lqSb08semesu29KFoDB+bFbqK7ZJ9J3CIuaCHeBE3ZAJBrgDnf9F6kLuKQ8YyTU0aON+4EpbvyAN0/7V2VAHjNG/SEk7G5hkm7ME5luatX3EvL+siqZ8JakYAhpOLhhFri0FyFeKNUN+a8G4HOk+beNPbEB9AnlvB/ZRdiPJyasIHpnYnrkbjwPkhY3qZQNhYwXobkVC9iYYaTARYwSb28JtMNBg2YRBlWzYC5MPHURkJRnYl76sTyqvPeMb08V6I0rarKPb4PjZmdfpzCjcf0EVupNEnz4/jQK4RJxM9P10JgZqaWVbEug6ZG8jENgK2v9VyN10JjjRVvmzTDzT/Jrw97a+1F3mNzFwqegXUAef5lnfWB8gz6Q/8SGl3MWH70ear/QR8eN76JeLH88nqy5LRUzu8pPbvSdsm0jYckvyJsuTh/gtsnaY0eeqfAO176QaL6q4BqwAZNnm4frQPzFWo40DaO9NPoNC89033Y6tMwz8oVzdj7CuHPYUc95qsqD0uZjMgF2pw0JlVmaF97Q+NSNhx5mQAo0HTvTbacE1PU74uqZr/WVExGL4A7T8ao/ebrFrsEZLRE8UPp2NEH97M79GVmJj9/7EnzG0j97eXUNu0aD8u4FCsI0tL0D5TLdHUocTYz+RUZ0pPXUOeKerpPQz6j/IsJ9fs08hwNpjvyCitapzj+Nv7Zpqw+wJ5d96tD03qy5iwynM17c90xhArKGlLpSJFiQfBvxbIuOdF9K8/BTwEUs0Lhrq5F7wFfga6kGjbQvrQvJbe+gIZTelxOPDSYBji3+9NKHA88F6w8s+V0YYxViBcrkZG42fN3q6K2NHn4b1O0qcYvbkMhl8R0cldiRmyKke9qropxyM52lsKMhzlZAiQMWSaj3uucqXr9m6c83U2be90w8d6fxPaf1I2jU0nIzNDOd1QkvYxdDVDR/40alQgwsA6t76x+fXqyvJO14F/K9udi+rNLe1ei38FSzFYDT5JupkxD0zn/LzE8SZwCdgdOK8QMpBjgGTvAR1CtGkLKhJS0QASdgBPphLIhk892n+7G/gZvZ/ga4w/iA4XcExF8v5mgymUJwO6BxgNNgIJWkhgZiLSXkfc0UND0cbL2Jwq1zzVzNTkZL7ypTnzAscrGAyfYIUXKdlD0xLx0YyBkfL4Teg08hyJ+cS1piQsYJlVXl5m5XB/IFFoZxzVETrwVxq+SlvrlwscA1ufKIDoCC6FB2cqj0EzrqKy/C77RGQS7nrp6vYV6ECeQkcTp8j2SNLWS9uawIcI7Qe0fSGj6CRd7K9hUjNfOoz2pKY1M9R2TIb0tMn0Rxfiq8BwH0Htxe6BXm4E6YyeKyuyutA8DlMXkPuAjOeP4Fr4Yzm2G31oqrfGe7uJJWlFBPeuDDtVjsMcMtU8+lN9FpbuQCzx+BRGz9Wu0Ux1ZCfXm8jx7PgNC5vgq3Wh0OKGYNXSsKm4892m2dwzyY40CDuNcDn2ogHPYvgK2g4Gz8dsfOw+NLYESNm/hZY1oLsxrwdNdK2kUOLB5iQjQyBlyxMm1emoZCir45L/S1X7oHaGYfsS5+IXaljZUcskwpq88tayJso5HOEbgHfPajw8lcdEchN5tNy7DRzhSJHB2Ab5Lxy8jEHKkhf2BNg5g/CvpG9L+Z9mkPNNpp4jSVCbqzwCOmdHU24hltGbUlYzZU311FHQKA5ITdBUvm0CkU11k0LL2vJoGQ9rVs1fGOp23LDI7Lw8YzX20R7VQxvKu9VOmzfvzdEYxmw70Gmz8v3YU+aXFdroqeOc0M0YNcdnUkKvQOBbZK7NJOdKl6FzIpkonTuRTCi2QB0NOh8dtbvRK2THae8DlPcXoC0iJ21P5Dgno53CW1Gu9ybDZHiPeOrjWuoytJ7k1FGMnvbkTgVeo/c/eMeig7yNnmqnnE9Auxo91cObVacsLTODGkJlttELMeJ4KGXprOqKEwth9FTHqF/r3zti3rw3Rudg9JSv0wwfmzSno3xdedqF6Ngxn/nvkbjqQ+4/7DTIa8hMKb27zFmLSOI6Dfwiak8uTbkT4Xt8MhwdNxo+SfmzKFs3M7RH1s1Rmi4cMno3gUYHX6Nkd/Ks6OBlG9QNnc08wlqSnsY5+8XDL+roU72q+jeVmaOby0JlzSGsUnzuWCZwyR718x/r7MZ3iuFjiTsAPZzcrp0PBNYKmdDJj7ofmWhVZXxAXU+Cc/C6vTqdNOD05xLhVgUWN0Me7s3F3cTUreNcydhcBbimuWgQsREuTmEj/Shuf0+RWtJq+cmKzkz0pA0kvruHlzaKodQSfh/gvNnGE1rmNvr9QdrMRZhY22zt1xwsXy/I1pGge/ARy4zjQVpdKDqdOtzwjY55mefjb3ufqC+4MtgAPXywKdspc8FPPo3X92w6ORm6ZZzUhcuYRLOW5X7Q/m9oP9cz1117GYv2NHy7UP4awEnv0pZPge6evuxMIKyl6v4YM10ys6X1EdzSIzyd+O0eXtFHx2K8uzVHtwyaUCDEqBO4exuuD5k7cWdb7cV2Roc63PBx2dyNjo7qiM5yj7ciwqsx8f3ElFUGAqMQi4xGYF5y/y4uLWshiORueCmRnjh604sorskpg9EV6Bk68b2nI+tgaFb38PKOUmYNhRzkU5D2HBP0PAFvewbD2yIhkMVRss7lsYabfuVuThZ5i0qkj6kY2K05MLimiSsAPmt5NKoH8j79pZt5qVga2qGG7+3YS8ja29NganeKG6yhPUzw2EyVBQKVn2Pibk0l52f0UskWIX8+bdLeXlFcbQugHy11tWx30jpE5DUVmgZR4I6eQn8g/mKCh14/IfxeIh4/rslxVw/PN4pxZRfM/myWMx2zYXCelkWKDCi3ggP0Hn2IVzHiXt8ney/O/8HuQmmjQw0ft7v2ZZBkNRgK0UF1LsDnvHjC71xuv2mfJgP9qv2jryTk9OD8jJ54fnzlLUJ6Gr2/UoTtalOT6Iv2vj7yZNYeWcE9Pso8AsgwOUne3gIng/DjoNHD2wmj1sPD84t2g7maJ0Fl5fTIjSd/p0XZ1evTUrkeMbbClgl6LwwtIp0Q6jDDJ8PDhse5ndBHjFhgFfZXR2eqOxBY8VdkLnDKeY2bN+6ULdKw7gpeXqRty6dZ08nsfbSlZz4FevNitFaAd6CHr8eB9KVqXRudpOXuVCeD8LZgSw/PL6o9wVU9CUuIL3PLXPVBho/v6mHwYirCyLC91zHvA3t0mDJaljKlwAl0/ixuaKxb4GLTFie1yzXQkdvpB33IoytspLyeNlPs+29PIbOf5Jy70wmjp6OTL7kEJWZDh11REhWnPv6TSfpN6uRlNkXLdp3eckcPKh3hQgRHUMjKnoLGErdXBU4+Ol6CoXwV3uYOfjXhEfDfJN1rpB1i9ru/MrJO0k2TeicjU5h6BiFzNhgAEkPRL5uG76fgGtrl3TLwk8+JFwoG+kSYcAnDx2xpZN2VkxHXthgrxD8wj35L5WpvfPq1ON9LyssDP9ZWmoZA+Wdl86tuGmV+0JZOVtQhhg9vbygdODGrFhVQKIK6moHurXGCu5cb6xxudLw/2P+dQLtm5BoZQFcS2Q6s5GyOQ/tOdjGHtbzQWwBdkXQ6BCelm+xOuWzDhyHovYY9wRiRN+ZHT8A8GXRzJOoCeh34zsHzBjWpvW3XDPf2z5svGWfM9iZyN8jGw1S+HcAg8umtlwYxCkXBoD6zhOFj4qlTlhXm3gar3SzpBT5Wwf7AjRRxqD4956aWeFUkbPotUQ3NUviQ27mTfkLrVYA7ezzmPam+Qvkysa5jsDxy5zuU9NBkA5U3MoTsDVZeN0JBB2bRiEmo8z4/Oam9RfV+EkXF02f8Czqoi6h3OASuZ97UtIL1FYMwhPLkbTjpSyITnAxnGF2/SxxnxUVrEfudi9M60gTL663UwqtpLZqSoxs72Rq9RCGbEsAPKDjNTrwXFA3qo6LyaENezzllpasbszaJ0n9aClkRUxVtMt0idbj9S/dctaovWbOjdjd8U3BXMfU7ZNec9pPSe4KYLF1FT//QGA3GlMQA5o1CcxvK+SKlUPEn/Ismjiv+Zra5heuQk9PkIu8NB1dijpFRyLs8fuIvMja+zlDO/T7p+jqzlr2pSAb7J0+ijF7WxgLZn8FCTxmZorqGtzKutHUNsCHYID0akWlYz7Lm6CKUpKXh+rnxDSYTjfDNKROtDpnsHzWq49uCTNcfkgWmCAR5OFCvwQk8GB0JBiPyerMi78DJKlO2Qiwr+yCrx1ec+zDZZs9bTsZOzxGJdIZjr80ENi6zrGOJXih+KqLN3y5asOjWHr16XO+UkWMtwijaFIu3/DZAnB0/JKTc3A6IMfDsx1fS7St1QDPapwomo8atcy9NFc0BGSeLBDMR5a+IzI4eOe23jfPw/KIvwZwFnHdphxHfGEwCfsRcb/UDOtqv3AB85pfBy2O8TqfdJ8E/DawST2cG2KSjoPnIKtJFCRmbSRnHEDgOSAeuNFvA9a+Mjcv6cLgp+InVsOjCQFVP+6JQ0T00z9RH7Jd1IxTBypcpZ8kbvcWVPUVkK77F94m+yGNxX8BY8pb1UZd4W5JNqrAoV19l1pZWEAMbMeHE9ExRcgu7XQ0fa9tTWeLqhHcKydjpauAlzNFpeKKPbRL7cq03ORmfv3D+HT169hiF1dw2yWwVSOg6cWwl0BkMfbbo086ouIPqlNEb6KlrGvEvPLy2RvcgI8PDRSwUzBsujn9EF52HwNmOZK00jgC+ho9zFcUwfO6QV7Ac7A6eUCQbopyHKWcCsjJwIufo1wD9E/iDEvyIvFouXwWy9pz0ITgcjA1NsKyBfEcBM31xZNoqJqKbJgN4h0AsOR6bPmdq+uxtFks/GWlTflFtLN/cw/rqA6SaynGKyOkgHsIomhMSW4D6qVlTwY6BLiFZULsZvo+4IqP1PzpanEVzOkiEGx3suI6htr3S1bj22ms3WM3WeTzF9TqqtnUVWzKTqyg7ZvdmMv9vTdevLpA2kj54H/+QZySvLy9i8icMjjwuJ72MYVnkZPiFkaEI60nSTgHO5a1eYfs76akmvgzrDyCxT6URtgt5BpBHRiQrQnYmgkIroiwth9OR6q5JJ+BN09557MGelic26PRXmKD3kR0QCvBlFplc0zxoNdO4GwFdFLKi4bFvMC7xE/7M5PZZM28ZspMFJyx1FVbiDE7CSgUvvEAFMqpGvFhbe3Cm4gLlgXFcN+91yTmMXosCW0Iu2Y6N6Kqrj0vmbQA6ttnZ18bk3QJpnTfHWbB/a0Kvdzk9nOwLdUtuRnQnN8s2JI97eOmiU0lkGrioL7GDXBx35AuiE90s05+4DGihyGvMveV+DEPtyJqsAF+zNGXNJhR6IZFpOI8Z8bOvk1jxWUG+QKqtWL7KUlFpmo59230xSGTJ9agPeIZyzeSUbxePD/d0OA07zFlR8YXLAis2RC941azw4u/MgvRX8iZzGb8GsTd96JucbokpxomPmTxd1pzGz77MdXS3Ndke7OhKO6o+jJ4mrpaQa3rq1LL+JQ8v5yjlM2zNMOD1JvVj3DJmWRGyiyjraYRHODJoou4N/xY/Aw2vgbSnkNkfOAfSofBfIf1FR1ntEqSOudR1CIVrSdwPJEa5b31adC5e2hCxQsE3Pp7w9m1OoSU9qp6oWdhwAu7zQM2EMJrFWu3Ir4SfytOX/3DKdka44IYP/7YbfbyUXjpPXmf0LWOd1eHoRkFTfyaCF6UTDlQHZvDLbHw01f4CcDrRzkzT7sYFDN5Osbgd1PHTqedgT12anLfS76Ueflui2hs70JNRj5r828PLJjoeoWlgHYfwbwjLY/3AwXMGXyUyAezgYK5MeAwGaTp9zMkbc5SRdZA6ZOD/mHWGFIJ7LGyYMb171T0LF0cuRqQsyluG+p0JTtYFz/UyX+290OjC0GlUcOOEe3sKytPJLW7iFxX1OezymuAxz7feyG7d9qXmYZjv2NfAtNfB1lk7iKOfidQ+UZckJv5f6dglPp3TBCqUlzuIsoZ66tCdypc9vGyiXyGUXP7FM8iIpVzucv60RXE5aIjLJw6bE7gXHWyYYLTxyK3WjqN5ixuubw6Gv2gOyejFrsf8kEr32qbyO5/qFdo3j5bwIIv9bLSniNiNFA/TN1pQwzc59oWJM3xrKkpmxDRG6lfvXR48c2zsG2opWxnowaZ01PwTAd/N1pQZOyZBk+zajqmqY2thsq8EbqZW3YzSjQcnzSRyFgYj70sRdWj1MxJ458QjlJ/zOSePZvpboA44aTh19XUynGHyvUTc71xuCf9x8u7ulC/m8GD6Xhe0TgpYzYt0huyzxG5FbVOoz4BFkQc/M+ZMrRBz7cPo2Dmy89kvJlC2bjqGc/j+ofck59oGlzybGBewxF3FxSzySIA3acqs6MErxfZ20rf2S764a5nn0wt1SuqlTJifO6XmtlWa0VAxwXk+1dKyU/o+CbBQctFiYifTby0nC0HyxlSfk5YSacsyN1GGlq6fJiLxo26eDPfwvNFLYTzqZRIfBB5EL/p1ubV80n1ZyK4AziLxSB+BgtoAb/k7hsPjy6ORU7mz26yH8aoijaYm3GhqLVPD7eOrwX9wmLYbG/+tXG9+b/wznhYZacou5YW4w1ReBZcXfXSTZTS/Lum+AN7PHerHe9fs9vQKPU56pnuvfR5dYYWeifJ0lSsIfaJfuoq/2F+QAjugEF0l9E4hM6yKtp/3lDHv7pfm6ffARoEmq8n6BzephtG8YjHwL9IWmr5MUSUTkV2RVqSbF+uBHYCWQr8FzkdCiNpUz39tqTwXjxfisBeFeD2xCfC+b2vhtE83OV4n/1BHGfJa9Zscj5Huu/SEX0f6icj1Ars68irIvUOjVdVByOii8AKYBOYDRrRNukhgU+z9xJ05SpcDAL6JiyS/0MVph8jmGOsPTUW/Ksu6LBIIY2j1A+AxCprA3jzwslsfY56bYv/2TXAqDyLPoQMLsWlyw/vwExIr01A9zzeY45EcaxPXQZWjTvDZv4XR5vKf4sXqF9JrNik315QtXHq8vELqMU0m+PR4fotnez4pVhDD9zGV0Jgz8fZo0LJEIZ4xQiVorsw079DfWL+n9Ten60GgIvAhNzruRY9/TSfXQWnySPSFjSUdVF8hqtmAQp4EeqeGYWOTjhVAk3oNkG5c/kj6mfTZzyMiKXfCgMgY+T2FcC/1NOdeoiuH9oaPBs4L5S7E5fml3JOl3gW06whkbgQjgZdWg3FcHHM5yuPXOJAd0MVCRlzA0KSkcaS8nzK1cAk8g9R0xVTTc0FjsO5KE2zuGUKrMaOl5oYqGAAHEDiAb/fxw2wVc/myyyJZSH6tQ2NiJR6U1kUxOWAUVgm6crBm41h+26ilc6QDm8pX7D4yuHCxbfTEaMbLsQKRfXtF7IfQb0w3wGIlZPGfDhyC0dPJXOYowDVFnp8+oVNlwhcwEp/izsystB1ZzO34HvaJGphWrv0TH2aCvNb+1eRVg3fidae0rdpY4kTynU2fJ+SQP2FcnVm8PLVnS6cA4W+BDENeRFunYMBkXPZyFNSPsPb6JpOOP+JPpP2CzJGkTgcyciv4S9pvauA0ZU31SD4I9DOjugB1CG1oFt0+IdBzWlV0ya2RQGSATF408epFvAUYOHmqcqRs0pshqUgvimLwli4JVlwyM1qGw7I4KVphmW1bBp7K4NU5KoQ3REItacksuQUm87wP5Z2bW67ikA7EfwFKamhm1REOmVXKy83FmVoX6MWv2EcTfda4TTl2MxWVT/qPZL48nwI6KG/qkZt9A2YiegU4gImai9HT3PKOcXmWXpL3VeZhyqP8xcNra1RGxkusAG0v18t3xelvPfgLzMNBIS5y0t9xlHk8mOOqrAMi24UXvVoZqdo2alVdEbZC86Ot7lclGqHT5j11iTSZMasubEKvN5iqnbaOLrhylJnjWvWUha3vtcSNvZ+vvcAA0Cmu+EGlpC65pY50IX3uRL/5uU46oWJNa7nYRPnxY152Rhu4zgc/19PsnLHNT9rPIT2bUa59BDShr0fv09qn+IKW+nYepX1G3jFABu9ckN4Tb11RE6wvPWzpTIbUSVOJOOeC9r2eoz6tpApBz1OI+uKkL4hkvYymLSrjYCADqPd3W9wbIhmokfSXwPFgJGU9lEG+XZM3MUt/2dg0nPttj5otl4SCt2PEpmDK5mWqVMtgMA08zaJ3n01N/S5DzLz3/PJFm8IPcPLs5yVZLrMoLmePr3LmzIpau+95XY1p7WAKmMAy115/+zWgWHmyHFGZbfspBi4NwSZtKNgfLq3j3dxf6s2IUQZdpSFudAzhJ6ReR0TLNw9Rpj2XnPPJI9L2qJZO2zGANaCLmliqrUMDLwLD4g2V6r0kZUnX8kBkIL4Fn4Kp9PE7jm0m6l+RzOeA/cHX4CLKnMQxSciUE/kD+COQTv8BnkKOuVMYog4tpaWHgYCJa66g/IyTHblWRFkab+uCTcCGYP14XHt7GnANYDr4HMjwM1XNN9SnGyBFRwxmFlpl22NLtmPHfXUGSHeWuL0wcGW8ELeUBi/G0LF/Z3HeIhM3yvKG03sVZqPqsDmjKmpWD5rqOTPKe964c/PPtqFss+FjHRBC43o/ctei02QWDdLsixk+xgn710HucNizL1ihFB41Dx//m4i5M1NR3OhgszaqieWhdjN8mowj0PsrngqLNspEraJxtWkaqNMhaL+pgb6lveCkKcc3ifq5wtl3SBsp27UkcmZATntoPBURkMdXcKJ86UBOwiLqKMjeWrxvKlNIXGWlS+lQuixIPZTVoTSarYdBGEScD+1H5kW3U84JHu+6zYaPO7lHMpruwNuTpVjmSCNDZBs/FrgyfJp6/DCRzecbG1PqLDNiqwzfeLMarHVNZZRlSHQ9O2Ny7MViLWMxEc/7eB8laH+moMYh71aVCihpYBnSQOIKkVOTcU1XxeidvawaPWdng3y+WnsAurcm2xeKf9UVl3sTLs/Hjc5guQJVgW8o70aQ9X6Ns/4cwz8hf1XJ6OWotZJ4SQMeDbTJ8OFTn0I5eKLLLsmvS6LlLkecG+sXyjltJB9QzNzLOffgLr6TWS5viZsoQfs2JSppoKSBPDSQs+HjDY3fUt9xeHuyG12IEmbQ1aWeeLYXaT/TxfVEeEuPDVj7KxR1nqRCRj+gsDtRO35piUoaKGkgHw3kZPjGsuGIefgTk2+lfCpdVvJGse18UHHffqGK/TK1ORCo5u6u9Z9Mcm1M1wb1Dehddz1LVNJASQN5aiAnr40bGruHOuCDiHn2qaDZ9QRQxAp81mCat+FGx6/pCres+v5cG7jlHuzjlsvp+uLOGou9hNHbwy+hxCtpoKSB3DWQ9YzE2+PjqXyJeDmiIE9BlPNwH897D6oIun48xlcLeH0z8Pou1r3hFkhU8TaTHr84v825SxlLGihpoJUGsjZ8K8YeodiiVQldmBEzX1IRn5MOmuOeqcl8o2OBWXI/N3gnGovVaTRhAPNS0h14e7xCXKKSBkoaKJQGsjJ8U/ikDWtivS+4XJFu9jZg8Zp0ayNg+q7abM4cneHxlt6B3ot46/cK08xPvDdh+Gzj12a16Q2GK9ucu5SxpIGSBnw1kI3h0z6gXvNZ2beELszUC87NGD1ucNjP+NU2m8MOMZW7Z+pyWaDHsyx5H4v/7l4m8VTpunv7d/Q+O5VAiV/SQEkDbdNARsPH4yvaVN+7bcUv27nk8SUe8Yt/4ppD9OwHTe8eGXpm1QUi1/OV7V8MHmMb6UXyPdfGvKVsJQ2UNJBGA2lnJW9o9ETgz3gdvdKU0WWTZOzKIlHe5mjpIp+83nGVbq1+6atFIB6qqeg5qSEauDdiPyadVs2t8sJYBK5G7+3yzqhfhSVeSQPLkwbSzkje0DiEOT9seVJIoq+6oyuDVxUJm8pIs/0GfQQPUN987VvXcPFY03v1hGyqY3hp+KpguE0/CfgwZb6VqtwSv6SBkgby0wBT2Z8+MqY/j3G8htcxwF+ia3PjX2uNd9KyfxBZkUqMYYgHXIImdGd/03h8Ji1YYesgMuTyYPMMytwFvevGRolKGihpoB00kNLj4wNlJy6vRk961o2NqO3nYekg/aKToG9CNfP1pGbTeMhHpmpHpaWjN8fz0Ugrp72620pGL51GS2klDeSvAV+Pjzc0tuBm5v94fE3fUVtOKWbwEp6fvv0vjm0M0ZqWwTyp98Z3fBtvROzjlSn1xAdLB/MB2LcQ6JZSKJag5/W2xfDpQ5Jdkvh+3Cp0rIo+zuisDtIGHks1a4NvaceCbNpBHn1+bTUwjzyLnXlI080uvcb5PWkd8ZUeZ/VdKvwo307kTmo/5lZ9d88rmrMsq1tvfrSJ9zZ/WoNP8ufTcT+PLwBzzPJt9FpUqvd19Y0+eXr248gYPR2134ft26ZvMHhUi3SKULmZTMoNKVITbNnV85g4Xdno9aWPd4NXMBaDEh0vxJHy9NuxJ4EN0pVHui4+2nq4GEjn2ZIM5ZNgV58MB8N7HUimRBk0wDmoAYeAwV5Rvoa0Et7Wg3wS7mRv2qr8UBD3HV5ic31Lb1qu8VaGj8dXDmXy7ZZrQV1Z3l72Yuh0TJCMIZ/qrSoz0dOfqK5Oe6MDfXIBM7eAbxL5fY7/Ru5lH35XYu1MZzTYZSCOKXDHtqW8awBOQVr6Dan9wBj0nctdc32eXvvd8u689CmM+0FW3qM383IY12fz+TCy7UF7u8+Xjuzfiead91ZUA0ef7tcxL+L+RQu9hxvJ3C69F2qrxGHlWlREqIWvUNAq22C15tCJBC8EKT0IJtlMrnDXIiPPj50EF/1MrEu/B03fdZE9ALwGvgBHw7scvcwj3IpI0+Dmwm8vLXXhMPC44Ns/sbiAfI3iieDLi1sbqI41iPfyM2rxMlXGeWA6SEvIa/m6DpgNVLYeM5Lz7yV59NOAr+GjHNW5FtASWx79d7RvPkdfirdTE1zzUxdL1aml9nzyJccYckpXmdKhjv2B3u3W72sk9UPcReTrBUP90jiciazGny8hW02CDFV3ID3MQN4+H4RtQka6kTev86UFkaaG2qxlvzA70W5k1Y/1gM7vasRXJM05BmT4HgR+7VeZ0l/yHJBf9aqNsyin1VfJSV+VNF3odOGaBX5ATr8r1kKMntNhbtjCKYXSasD+KQd+xiQcOe0d002eRCa6C4HxPkLXofepPvyuxNqIzgwHr4B7gTyzQ0Aq+j0Jb4L+IEFDCYwDQxKM+HELjn8DGtzXg32Bi5gA68N4BDwAdPF5D95ZQEapFcHfHabqeg48C84BMhStJhe8UeAd0B+4iHJWg3EreB2ofpX5KnxvH2DbRlwG8mHwGngG3A9kCP4JvJ7OmvAeB/J0VbbaOgncQPk9ObYi+NvDfBm8ACQ/Dt7BQH1zEbxVYNwN1JZHgcbuFfD7cHSS2nUJeBMkyn6K8BRwL5CBTtDqBC4DQaA+HQ6cpLIfA2c6mY6wjKpNtGMbAv8DpwKd+ySRVgGOgDEWPA2eBB8AnfPVVLlN+OpDuJQcloiXjllqgItdNGTVRqrrzhvtPsGtCohfka4gQVe1BGmgamB3dZIhkbfyNnr4nuPnQBMuOQaJO0leSX9Q4WBWx3k6OkkT7BZQD8YAGdckUYcm0z1gPXAM2BtoQv8DHApchPxAGA+Ab8EIcBaQ4ZQRc547ojZp+dsfuCafnRIzsqrjz2BXMBJIfgz1yENKEnF8D9twb87xKLAP+C5+VJ7kpCcsCoGVwfFABnAvoD4pPgq4iPI3gCEDKT0dBCT/FngI7Aa8dA6M7YCM03BwJTgDHACcpPJuBar3FCCD8z8g4/sM51teX4J+IqBymuJHGUgnqU/S84pOpic8N94XGcgPgX6xznte1O77gPqnfu4B/g3+Bo6xLfGjDC5G5KlklktYolw0oB/rsG9/mAPW71M5wsxtlHeQktDxy5y0JxHQYNLJvxHejykzdIEE+qsJcCB4gr5+Fe/S5RzvBduACcBLmiwazFJwgiIExNMxSZS5iDrehSHZccRnJRNjARmvrcAw0sbH0z4mz7qET+eoyTk/ztdBDoDafAr8GRy1nA5zeB5UK+4hpaldMuxJIk+AiLyNqynnnXjCF/DHEtaFQMZsSZyvw2+BDNARyP9XDGQnc9gCqF5X+cTVX83hW5C/iaPkv+FwJNhMcQ8dTFwG5VjkJSf5TzhINyeqXfBlxBLUl4DqWAj/a47XxdszOyGgI2nqv7wpm5AZQuD/wKWk3Rbjxv6rfNInElO544l/50wnrD5qXrjOsUNG+toJ7AteATpH0r2X5sA4gbQ7EgnUK8Mnw7yxfbXdEIvIGfp9QqB0zE4DFj+7Gg02gTAfMQiY3o3WP+/qkXFzXYVfCBaCVwHXnS5PmoSDBQbfHeBuwoeDFUArzwRegmQ4vOTHk4wMg8ZzN0U8NJD4AqDJ66S3iawHvN7FRvA0keeCBMlQfA/8ypdMq3Yx6bj/FXhQafT5dqAlrib9SKCJqcnvJBlieTxTE0zyywB8ASpBqzrgyfA5+yUZtbuauuz5TThBaxH4HCT7RfkyMm+A34DewEk3EJFReYmyPgJ3EdZPY6oMX0JGRlRL9DfBZcCPesFUO2v9EtPwmkmTzi4BW4OPaYuf0ZMxnkL6f2jPeeBZoAvPA6ARNJdxFnTVORwzOxfzr4JLlIMGggzLskgF16eQ6RkO9KwNBQ5DtxowKYmT8h0n4hQEviOsE9FliX5qYurq3ADk2a4KNCE11jSB9kBmIHpwTl7YNnknurwB72SOi6Y9qBwZEG/eRPmJo7MQeTFOvvLndK7ol/JfAY4FMqSajG+CA8HWwK89yiOdOUnGMB055ZVfkIGQvpwkvvqho5MSeVx8zsm79GE7BPcCu4MRYH94f+eon0JwlQ9/ffh3AxlurSBT6cuVD9lsSe3rCW4G8kzPpM63qOcjwi6CPxTG40CGcQIYC+Qt3gIqy8hdx6XkDKauvhzX1gZR1vJK1VyiAcrrFo0G68JNuoJmJE7WQxmFuobASnTjaHAfOBVo8Io01oaDV8HOwGv4NEGrgHNM9iPOUNWz461I5QoysF76Doa8OhndWY7EzQn/AOR9O0kTdw+wMlgcT1iD41ogl8k8BPnjgYzERRxtYlIeQkDGTMbJSdKB+rsxmKwEZLtzGAB+VRTkQ+r7AUC6kAes8uUpbwHU56Qe4Kt9+wHdSb6f4/3w5KH/F/we3AsWAZviadcTqQMHk8cuP5bq+19G3+9c+QrHmTLw0tmz4C2g9l1L3btSX3LeES+H/0cgQ6ftDXnX6qvGmcoIlg2PDaIZRErUJg3owiOUKIUG9offCzzPAJQxSxIDcQoRTbgTCD9J+uxkYuzGgialHnR9lKOM1l+BJr8mpZc08GUod0Z+DmXNdAi8RFiGRHc7/8RRRkSTQBP4fE+9sOzth2M4XoL8JRxlbM8GMkLNwEtKrwFeD06yMsb9KWcAxxDYBYwEMkKaoE6aSOQJcDXyMu4/glFAXpd04CWVJx05y1EbxFObVLfTWD5F/ERwMeVfzlHtOxRsC7SvKEORIJW9D5BHfgTHL8HqQBeySWApsIn0bgRuBbuBI8Ha8NblqLbIEH5B2c5JonrUZpWtR29mEE6Q8qg8Z58SaTJaOse15CGr9WfCL4C/Eb4YXsL4qd/qm1azG5CmPP3A34God+xQ+l/SQDtpgEHHW0jWU0CTsRXB/yPQXbphzkTierpfdz7ngc/A/4D2B98COzhlFYa3JngeLAV/ARr8SSK+FdCjGypLS7jp4CogY9aK4O8JpoLJ4B3wDFC+//MKwzsKfAU02V0ET49P/AT0+Mwb4CFwM9Ce2QYuYSLweoB/gWlAMpL/ADwJZBCSRFwGZjyQsbGJ8IrgOXA58Bpilb8XmAI+Ae+D6UBtbGVo4A0E/wXTgXQg3T0PtKRNEnE9O6n+q8y3gW4cKSye5NdJChMgXgseBBGgdsqg2UR4ZaC90AsTvMQR3o5AZQ4Xj6Os35VA/dksIRdPGwRPbZ4OdEPxDXAZUPtecw0OZ8ZSuKSBQmiAQbYp5fzquaoniya9loiWdtOQmZ1MIECaJu5QoGXmV6RrQg0k/AtheW0uIq0vjE2AHsqVh+Ii0rVU2xqozq+R+cgl4IkgvyYs1a8l4NugD1hKvnkck4Sclo6rAbWxMZkQD5C+OUEZOXk6uuv8KzxNVPV5MUeb4K1MQPp6E6if8lQ+Bo8AeW56qyq5zEdeXp2MrR4QnstROpOnNgDUwftBPC8ho7YOATI4U5D7yiuTiCOrC9Y2QG3TklGPI9VxTFK8HWqvZNVmkdqr8yfZqT55esL/LVC7PyPdXg1Qltqk9i+B9yPHJJGmi1R/oIeobb3F6x4MT7r8mWOSSNN42AqoTV+SrotYf8I6/yUqaaCkgWLQAJNyPSCvSp6ols4yZFrqN4DTi6GNpTaUNFDSQEkDBdUAxq0MnAy+AxOBlvUK3wy0X1WiAmng/wGuvyrHOfoDNwAAAABJRU5ErkJggg==" alt="Diag-G. Autódiagnosztika" />
+    </div>
+  </div>
+  <div class="hero">
+    <span class="kicker">Black Friday · Termékstratégia</span>
+    <h1>Black Friday kommunikációs előkészítés</h1>
+    <p>A top 25 termék teljesítménye az elmúlt 12 hónapban — nézettségtől a vásárlásig, a promóciós és ajándékdöntések megalapozásához.</p>
+    <div class="meta">Adatforrás: GA4 e-kereskedelem · Top 25 termék · 12 hónap</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><div class="n">967,6M</div><div class="l">Bevétel / 12 hó (Ft)</div></div>
+    <div class="kpi"><div class="n">4 925</div><div class="l">Vásárlás</div></div>
+    <div class="kpi"><div class="n">196 500</div><div class="l">Átlagos kosárérték (Ft)</div></div>
+    <div class="kpi"><div class="n">67%</div><div class="l">Top 25 bevétel-arány</div></div>
+  </div>
+</div>
+
+<!-- ADATALAP -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Adatalap</span>
+      <h2>Két korrekció az induláshoz</h2>
+      <p>Mielőtt bármit értékelnénk, az adatot rendbe tettük — enélkül a döntések félrevinnének.</p>
+    </div>
+
+    <div class="note red">
+      <span class="h">1 · Kosárérték-korrekció (ThinkScan Max 2)</span>
+      A ThinkScan kosáradata a <b>május 8-i esemény</b> miatt torz volt, a többi terméké megbízható. A tiszta (nem-májusi) ablakok benchmark aránya alapján a valós nézet→kosár arány <b>6,82%</b>, ami a teljes 88 494 nézettségre <b>~6 033 valós kosárba tétel</b>. Ebből a ThinkScan kosár→vásárlás konverziója mindössze <b class="hl">11,6%</b> — ez a felismerés végigkíséri az egész elemzést.
+    </div>
+
+    <div class="note gray">
+      <span class="h">2 · Variánsok összevonása alaptermékre</span>
+      A sorok többsége <b>ugyanaz a termék</b>, csak eltérő elnevezéssel (2025 / 2026) és más ajándékkal. A termékeket ezért <b>külön-külön és alaptermékre összevonva is</b> vizsgáljuk: a variánsonkénti nézet a promó- és ajándékdöntésekhez kell, az összevont nézet pedig a valódi keresletet mutatja meg.
+    </div>
+  </div>
+</section>
+
+<!-- 1. TERMÉK RANGSOR -->
+<section class="band-sec">
+  <div class="wrap" style="padding-top:44px;padding-bottom:24px">
+    <div class="sec-head">
+      <span class="tag">1 · Fókusz</span>
+      <h2>A valódi termék-rangsor</h2>
+      <p>A variánsokat alaptermékre összevonva — így a bevétel a tényleges kereslet mögé rendeződik, nem oszlik szét a sorok között.</p>
+    </div>
+
+    <div class="chart">
+      <div class="legend" style="justify-content:center;margin-bottom:14px"><span><span class="dot" style="background:linear-gradient(90deg,var(--maroon),var(--red))"></span>Bevétel 12 hó (Ft)</span></div>
+      <div class="bar-row"><div class="lab">CRP919X MAX <span class="small">(5 variáns)</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="val">247,7M</div></div>
+      <div class="bar-row"><div class="lab">ThinkScan Max 2</div><div class="bar-track"><div class="bar-fill" style="width:51.7%"></div></div><div class="val">128,1M</div></div>
+      <div class="bar-row"><div class="lab">PROS Elite <span class="small">(3 variáns)</span></div><div class="bar-track"><div class="bar-fill" style="width:39.4%"></div></div><div class="val">97,5M</div></div>
+      <div class="bar-row"><div class="lab">Pro3 APEX</div><div class="bar-track"><div class="bar-fill" style="width:15.6%"></div></div><div class="val">38,6M</div></div>
+      <div class="bar-row"><div class="lab">Pros V 5.0</div><div class="bar-track"><div class="bar-fill" style="width:13.8%"></div></div><div class="val">34,2M</div></div>
+      <div class="bar-row"><div class="lab">PRO DYNO</div><div class="bar-track"><div class="bar-fill" style="width:13.7%"></div></div><div class="val">33,9M</div></div>
+      <div class="bar-row"><div class="lab">Pro3S Plus</div><div class="bar-track"><div class="bar-fill" style="width:8.1%"></div></div><div class="val">20,0M</div></div>
+      <div class="bar-row"><div class="lab">Pro3 V+ Elite</div><div class="bar-track"><div class="bar-fill" style="width:7.2%"></div></div><div class="val">17,9M</div></div>
+    </div>
+
+    <div class="note">
+      <span class="h">A legfontosabb felismerés</span>
+      A <b>CRP919X MAX a tényleges zászlóshajó</b>: összevonva <b>1 315 eladás</b> és <b>~248M Ft</b> — közel <b>kétszer</b> annyi bevétel, mint a ThinkScané. A Black Friday kommunikáció gerince erre épüljön, ne a ThinkScanre.
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>Alaptermék</th><th class="n">Variáns</th><th class="n">Eladott db</th><th class="n">Bevétel</th><th class="n">Átlagár</th><th class="n">Konv.</th></tr></thead>
+      <tbody>
+        <tr class="hi"><td>CRP919X MAX</td><td class="n">5</td><td class="n">1 315</td><td class="n">247,7M Ft</td><td class="n">188 345</td><td class="n">1,00%</td></tr>
+        <tr><td>ThinkScan Max 2</td><td class="n">1</td><td class="n">700</td><td class="n">128,1M Ft</td><td class="n">182 935</td><td class="n">0,79%</td></tr>
+        <tr><td>PROS Elite</td><td class="n">3</td><td class="n">472</td><td class="n">97,5M Ft</td><td class="n">206 671</td><td class="n">0,93%</td></tr>
+        <tr><td>Pro3 APEX</td><td class="n">1</td><td class="n">103</td><td class="n">38,6M Ft</td><td class="n">374 861</td><td class="n">0,51%</td></tr>
+        <tr><td>Pros V 5.0</td><td class="n">2</td><td class="n">106</td><td class="n">34,2M Ft</td><td class="n">322 721</td><td class="n">0,47%</td></tr>
+        <tr><td>PRO DYNO</td><td class="n">2</td><td class="n">108</td><td class="n">33,9M Ft</td><td class="n">314 206</td><td class="n">0,51%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1b. FUNNEL LEAK -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">1 · Diagnózis</span>
+      <h2>Hol szivárog a tölcsér?</h2>
+      <p>A tölcsért két lépcsőre bontjuk: <b>megtekintés→kosár</b> (megfogja-e a termékoldal a vevőt) és <b>kosár→vásárlás</b> (átér-e a pénztáron). Az, hogy melyik arány gyenge, megmutatja, hol veszítjük a vevőt — és ez dönti el a promó típusát.</p>
+    </div>
+
+    <div class="legend" style="justify-content:center;margin-bottom:8px">
+      <span><span class="dot" style="background:#E4002B"></span>Pénztár-szivárgás</span>
+      <span><span class="dot" style="background:#E08a00"></span>Oldal-szivárgás</span>
+      <span><span class="dot" style="background:#1f8f4e"></span>Erős / kiegyensúlyozott</span>
+    </div>
+
+    <div class="funnel">
+      <div class="fcard">
+        <div class="ft"><span class="nm">ThinkScan Max 2</span><span class="pill p">Pénztár</span></div>
+        <div class="fstep"><span class="s">Megtek.→Kosár</span><div class="ftrack"><div class="ffill" style="width:34%;background:#9a9a9a"></div></div><span class="fv">6,8%</span></div>
+        <div class="fstep"><span class="s">Kosár→Vás.</span><div class="ftrack"><div class="ffill" style="width:37%;background:#E4002B"></div></div><span class="fv">11,6%</span></div>
+      </div>
+      <div class="fcard">
+        <div class="ft"><span class="nm">CRP919X 2025 + GPS</span><span class="pill p">Pénztár</span></div>
+        <div class="fstep"><span class="s">Megtek.→Kosár</span><div class="ftrack"><div class="ffill" style="width:55%;background:#9a9a9a"></div></div><span class="fv">10,9%</span></div>
+        <div class="fstep"><span class="s">Kosár→Vás.</span><div class="ftrack"><div class="ffill" style="width:25%;background:#E4002B"></div></div><span class="fv">7,8%</span></div>
+      </div>
+      <div class="fcard">
+        <div class="ft"><span class="nm">CRP919X 2026 (ajándék nélkül)</span><span class="pill g">Erős</span></div>
+        <div class="fstep"><span class="s">Megtek.→Kosár</span><div class="ftrack"><div class="ffill" style="width:37%;background:#9a9a9a"></div></div><span class="fv">7,3%</span></div>
+        <div class="fstep"><span class="s">Kosár→Vás.</span><div class="ftrack"><div class="ffill" style="width:82%;background:#1f8f4e"></div></div><span class="fv">25,6%</span></div>
+      </div>
+      <div class="fcard">
+        <div class="ft"><span class="nm">Pro3 APEX + GPS (prémium)</span><span class="pill o">Oldal</span></div>
+        <div class="fstep"><span class="s">Megtek.→Kosár</span><div class="ftrack"><div class="ffill" style="width:12%;background:#E08a00"></div></div><span class="fv">2,4%</span></div>
+        <div class="fstep"><span class="s">Kosár→Vás.</span><div class="ftrack"><div class="ffill" style="width:67%;background:#9a9a9a"></div></div><span class="fv">21,0%</span></div>
+      </div>
+    </div>
+
+    <h3>Mit tegyünk — szivárgástípusonként</h3>
+    <div class="rec">
+      <div class="ic">₣</div>
+      <div><div class="rt">Pénztár-szivárgás → áruhitel + valódi ár + sürgősség</div>
+      <div class="rd">ThinkScan Max 2 és a CRP919X 2025 + GPS: a vevő már kosárba tette, majd a pénztárnál elpártol — jellemzően a nagy egyösszegű ár miatt. Mivel részletfizetés nincs, de <b class="hl">áruhitel van</b>, ezt kell a termékoldalon és a pénztárban <b>láthatóvá és hangsúlyossá</b> tenni (pl. „már X Ft/hó"), valódi BF-árral és „csak Black Fridayig" sürgősséggel kiegészítve. A CRP919X 2025 + GPS a legnagyobb tétű célpont: itt a legmagasabb az érdeklődés az egész kínálatban, és itt a legnagyobb a zárási veszteség.</div></div>
+    </div>
+    <div class="rec o">
+      <div class="ic">▤</div>
+      <div><div class="rt">Oldal-szivárgás → értékajánlat, bundle, áruhitel-üzenet előre</div>
+      <div class="rd">Prémium gépek (300e Ft+) és a ThinkDiag licenc: sok megtekintés, kevés kosárba tétel. Itt nem kosárelhagyás a baj, hanem hogy fel se kerül a kosárba. Eszköz: erősebb termékoldali értékajánlat, <b>bundle</b> (lásd 3. pont — jobb, mint a puszta %), a havi áruhitel-részlet már a terméklistán, és értékelések.</div></div>
+    </div>
+    <div class="rec g">
+      <div class="ic">✓</div>
+      <div><div class="rt">Erős termékek → forgalmat rájuk, ne kedvezményt</div>
+      <div class="rd">CRP919X 2026 ajándék nélkül (25,6% zárás — a legjobb az egész kínálatban) és a VSP600 kamera. Ezekre BF előtt <b>forgalmat</b> hajtsunk; ezek viszik a bevételt, nincs szükségük mély kedvezményre.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. AJANDEK -->
+<section class="band-sec">
+  <div class="wrap" style="padding-top:44px;padding-bottom:24px">
+    <div class="sec-head">
+      <span class="tag">2 · Ajándék</span>
+      <h2>Melyik ajándék működik — és hol jön a hólánc</h2>
+      <p>Azonos alaptermékeken belül összevetve (ugyanaz a gép), tisztán látszik az ajándékok szerepe.</p>
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>Ajándék</th><th class="n">Nézettség</th><th class="n">Eladott db</th><th class="n">Megtekintés→Kosár</th><th class="n">Kosár→Vásárlás</th><th class="n">Átlagár</th></tr></thead>
+      <tbody>
+        <tr><td>Nincs ajándék</td><td class="n">63 509</td><td class="n">836</td><td class="n">5,5%</td><td class="n"><b style="color:var(--green)">24,1%</b></td><td class="n">182 739</td></tr>
+        <tr class="hi"><td>GPS nyomkövető</td><td class="n">115 471</td><td class="n">820</td><td class="n">5,0%</td><td class="n"><b class="hl">14,2%</b></td><td class="n">221 336</td></tr>
+        <tr><td>BST-360</td><td class="n">46 891</td><td class="n">345</td><td class="n">3,5%</td><td class="n">21,2%</td><td class="n">229 273</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <span class="h">A tanulság</span>
+      A <b>GPS hatalmas forgalmat húz</b> (115e megtekintés — messze a legtöbb), <b>de a leggyengébben zár</b> (kosár→vásárlás csak 14,2% vs. ajándék nélkül 24,1%). A GPS tehát a tölcsér <b>tetején</b> dolgozik: behozza a nézőt, de a pénztárnál elszáll — jellemzően azért, mert a GPS-es verziók drágábbak. A <b>BST-360 a jobb „záró"</b> a professzionális vevőnél (21,2%), mert valódi szakmai kiegészítő a diagnosztikai géphez.
+    </div>
+
+    <h3>A hólánc stratégiája</h3>
+    <p>Az új ajándék a <b>hólánc</b> a GPS szerepét veszi át — széles vonzású, figyelemfelkeltő ajándék —, egy döntő előnnyel: <b class="hl">szezonális, és pont a Black Friday / tél elejére időzítve maximálisan releváns.</b> Emiatt reálisan legalább annyi forgalmat hozhat, mint a GPS.</p>
+    <div class="rec">
+      <div class="ic">❄</div>
+      <div><div class="rt">Hólánc a nagy forgalmú belépő/közép gépekre</div>
+      <div class="rd">CRP919X 2026, ThinkScan — itt a cél a reach és a szezonális vonzerő. <b>De önmagában a hólánc nem oldja meg a pénztár-szivárgást</b>: ahol a zárás alacsony (ThinkScan, CRP919X 2025 + GPS), ott a hólánc mellé kell az áruhitel-üzenet és a valódi ár, különben ugyanúgy elszállnak, mint a GPS-nél.</div></div>
+    </div>
+    <div class="rec g">
+      <div class="ic">◆</div>
+      <div><div class="rt">BST-360 marad a prémium tier-en</div>
+      <div class="rd">A 300e Ft+ gépeknél a profi vevőnek a BST-360 többet ér, és jobban is zár — érdemes ott opcióként megtartani.</div></div>
+    </div>
+    <p class="small" style="margin-top:12px"><b>Fontos:</b> ez korreláció, nem oksági bizonyíték — a GPS gyenge zárását részben az okozza, hogy azok a verziók drágábbak. A hólánc pontos hatását előzetesen nem tudjuk megbecsülni; szezonális logika alapján tesszük a nagy forgalmú gépekre.</p>
+  </div>
+</section>
+
+<!-- 3. BUNDLE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">3 · Csomagok</span>
+      <h2>Három bundle: kezdő · haladó · profi</h2>
+      <p>A prémium gépek oldal-szinten szivárognak — ott a bundle jobb eszköz, mint a %-kedvezmény: emeli az észlelt értéket a fejléc-ár leverése nélkül.</p>
+    </div>
+
+    <div class="bundles">
+      <div class="bcard k">
+        <div class="cap">Kezdő</div>
+        <div class="body">
+          <div class="tier">Belépő diagnosztika · hobbi / kisszervíz</div>
+          <ul>
+            <li><b>ThinkScan Max 2</b> — belépő gép</li>
+            <li><b>BST360</b> akkumulátor-tesztelő</li>
+            <li><b>16 Pin Adapterbox</b></li>
+            <li>+ <b>hólánc</b> mint BF-ajándék</li>
+          </ul>
+          <div class="why">A legnagyobb forgalmú belépő gép. Mivel a ThinkScan a pénztárnál szivárog, a fix csomagár + áruhitel a döntést a pénztár elé hozza.</div>
+        </div>
+      </div>
+      <div class="bcard h">
+        <div class="cap">Haladó</div>
+        <div class="body">
+          <div class="tier">Profi szervíz kezdőkészlet</div>
+          <ul>
+            <li><b>CRP919X 2026</b> — a zászlóshajó</li>
+            <li><b>BST360</b> akkumulátor-tesztelő</li>
+            <li><b>VSP600</b> endoszkóp kamera</li>
+            <li>+ <b>hólánc</b> mint BF-ajándék</li>
+          </ul>
+          <div class="why">A tényleges bestseller + a két legkeresettebb kiegészítő. A VSP600-nak önálló kereslete van (2,25% konv.), csomagban még jobban mozdul.</div>
+        </div>
+      </div>
+      <div class="bcard p">
+        <div class="cap">Profi</div>
+        <div class="body">
+          <div class="tier">Teljes műhely</div>
+          <ul>
+            <li><b>Pro3 APEX</b> v. <b>Pros V 5.0</b></li>
+            <li><b>Kulcsprogramozó</b></li>
+            <li><b>VSP600</b> endoszkóp kamera</li>
+            <li><b>1 év frissítés / licenc</b></li>
+          </ul>
+          <div class="why">A magas listaárú frissítés/licenc olcsón ad nagy plusz értéket. Áruhitellel a havi részlet teszi elérhetővé a 300e Ft+ szintet.</div>
+        </div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:14px;text-align:center">Mindhárom csomag ára essen a különálló árak összege alá kb. <b>15–20%-kal</b>.</p>
+  </div>
+</section>
+
+<!-- 4. EGYEB -->
+<section class="band-sec">
+  <div class="wrap" style="padding-top:44px;padding-bottom:24px">
+    <div class="sec-head">
+      <span class="tag">4 · További szögek</span>
+      <h2>Amire még érdemes figyelni</h2>
+    </div>
+
+    <div class="rec">
+      <div class="ic">₣</div>
+      <div><div class="rt">Az áruhitel a legnagyobb tétű, még ki nem használt kar</div>
+      <div class="rd">A pénztár-szivárgás (ThinkScan, CRP919X 2025 + GPS, prémium tier) gyökere a nagy egyösszegű ár. Az áruhitel <b>havi részletként</b> kommunikálva — a terméklistán, a termékoldalon és a pénztárban — közvetlenül erre a veszteségre hat, méghozzá a margó feláldozása nélkül.</div></div>
+    </div>
+    <div class="rec">
+      <div class="ic">◎</div>
+      <div><div class="rt">Magas kosárértékű, megfontolt vásárlás</div>
+      <div class="rd">~196 500 Ft átlagos kosárérték mellett a mély %-kedvezmény fölöslegesen égeti a margót. Az <b>áruhitel és a bundle</b> erősebb kar, mert az árstresszt oldják, nem a bevételt.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fmeta">Black Friday kommunikációs előkészítés · Diag-G. Autódiagnosztika · 2026</div>
+</footer>
+
+</body>
+</html>
